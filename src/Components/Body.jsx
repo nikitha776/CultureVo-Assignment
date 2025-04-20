@@ -12,8 +12,12 @@ const Body = () => {
 	const [filter,setFilter] = useState("All Tasks")
   const [showModal, setShowModal] = useState(false);
 	const [editIdx,setEditIdx] = useState(-1);
+	const [viewModal,setViewModal] = useState(false);
+	const [selectedTodo, setSelectedTodo] = useState(null)
+
   const onClose = () => {
     setShowModal(false);
+		setViewModal(false)
   };
 
   const addOrEditTodo = (newTodo) => {   //to add a new todo or edit an existing one
@@ -58,6 +62,14 @@ const Body = () => {
 		else if(filter === "Starred") return todos.filter(todo => todo.isStarred)	
 	}
 
+	const handleViewClick = (todo) => {
+
+      setSelectedTodo(todo);
+      setViewModal(true); // Show ViewModal only if the task is not completed
+    
+  };
+
+
   return (
     <div>
 			<Navbar setFilter={setFilter}/>
@@ -76,6 +88,7 @@ const Body = () => {
 						onEdit = {()=>editTodo(idx)}
 						onToggleStar = {() => onToggleStar(idx)}
 						onToggleComplete = {() => onToggleComplete(idx)}
+						onView={() => handleViewClick(todo)} 
           />
         ))}
         {filter === "All Tasks" && <div
@@ -84,6 +97,14 @@ const Body = () => {
           +
         </div>}
       </div>
+			{viewModal && selectedTodo && (
+        <ViewModal
+          onClose={onClose}
+          title={selectedTodo.title}
+          desc={selectedTodo.desc}
+          date={selectedTodo.date}
+        />
+      )}
     </div>
   );
 };
