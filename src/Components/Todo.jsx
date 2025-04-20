@@ -38,7 +38,6 @@ const Todo = ({title,desc,date,isCompleted,isStarred,color,onDelete,onEdit,onTog
             type="checkbox"
             className="accent-gray-400 cursor-pointer"
             checked={isCompleted}
-						disabled={isCompleted}
             onChange={onToggleComplete}
           />
           <button className="cursor-pointer" onClick={onDelete}>
