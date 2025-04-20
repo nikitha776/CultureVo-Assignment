@@ -30,7 +30,7 @@ const Modal = ({onClose, onSubmit, initials}) => {
 
   return (
     <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
-      <div className="bg-white w-[30%] rounded-2xl p-4 relative">
+      <div className="bg-white w-[90%] md:w-[30%] rounded-2xl p-4 relative">
         <button className="absolute top-4 left-4 mt-2 text-2xl cursor-pointer" onClick={onClose}>
           <IoClose />
         </button>

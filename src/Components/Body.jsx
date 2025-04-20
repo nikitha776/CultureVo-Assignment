@@ -74,7 +74,7 @@ const Body = () => {
     <div>
 			<Navbar setFilter={setFilter}/>
       {showModal && <Modal onClose={onClose} onSubmit={addOrEditTodo} initials={editIdx !== -1 ? todos[editIdx] : null}/>} {/*showing modal for adding or editing a todo*/}
-      <div className="flex flex-wrap justify-evenly items-center mt-10">
+      <div className="flex flex-wrap md:justify-evenly items-center mt-10">
         {filteredTodos().map((todo, idx) => (
           <Todo
             key={idx}
@@ -92,7 +92,7 @@ const Body = () => {
           />
         ))}
         {filter === "All Tasks" && <div
-          className="w-[20%] h-[280px] m-4 bg-[#ECECEC] rounded-xl flex justify-center items-center text-8xl font-light cursor-pointer"
+          className="w-[80%] md:w-[20%] md:h-[280px] m-4 bg-[#ECECEC] rounded-full md:rounded-xl flex justify-center items-center text-5xl md:text-8xl font-light cursor-pointer"
           onClick={() => setShowModal(true)}>
           +
         </div>}
